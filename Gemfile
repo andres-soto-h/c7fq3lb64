@@ -8,6 +8,8 @@ gem 'sqlite3'
   # Use SCSS for stylesheets      # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.4'
 
+gem 'devise'
+
 gem 'tzinfo-data'
 
 gem 'sass-rails', '~> 5.0'
