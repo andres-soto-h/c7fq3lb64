@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Xpenses</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
   <nav class="navbar navbar-static-top navbar-inverse">
     <div class="container">
@@ -22,14 +24,42 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
+
+        <ul class="nav navbar-nav navbar-left">
           <li class="active"><a href="#">Gastos <span class="sr-only">(current)</span></a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+
+          <% if user_signed_in? %>
+
+          <li>
+            <a href="">
+              <%= current_user.email %></a>
+          </li>
+
+          <li>
+            <%= link_to 'Salir', destroy_user_session_path, method: 'DELETE'%>
+          </li>
+
+          <% else %>
+
+          <li>
+            <%= link_to 'Registrarse', new_user_registration_path, method: 'GET'%>
+          </li>
+
+          <li>
+            <%= link_to 'Ingresar', new_user_session_path, method: 'GET'%>
+          </li>
+
+          <%end%>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
+
 </html>
