@@ -12,7 +12,7 @@ class ExpensesController < ApplicationController
     elsif !params[:concept].present? && params[:category_id].present?
       @expenses = Expense.where('category_id = ?', params[:category_id].to_s)
     else
-      @expenses = Expense.where('user_id= ?', user.id)
+      @expenses = Expense.where('user_id= ?', user.id).order("date DESC")
      end
  end
 end
